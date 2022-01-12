@@ -4,6 +4,10 @@ import (
 	"testing"
 )
 
+func init(){
+	DBpath = "allbasetest.db"
+}
+
 func TestLoadSQLFile(t *testing.T) {
 	//this file exists
 	_, err := LoadSQLFile("./queries/get_total_pathways.sql")
@@ -17,7 +21,10 @@ func TestLoadSQLFile(t *testing.T) {
 	}
 }
 
+
+
 func TestGetTotalPathways(t *testing.T) {
+	DBpath = "./allbasetest.db"
 	result, err := GetTotalPathways("calycosin", 4)
 	if len(result) != 9 {
 		t.Error("Expected: len(result) = 9, got ", len(result), err)

@@ -7,7 +7,7 @@ when r.directional = 0
 then r.id + 1
 else r.id
 end id
- from uniprot u 
+from uniprot u 
 inner join uniprot_to_reaction ur on u.accession = ur.uniprot 
 inner join reaction r on ur.reaction = r.accession
 where u.seqhash IN (

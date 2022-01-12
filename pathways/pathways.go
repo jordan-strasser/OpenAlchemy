@@ -13,6 +13,8 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
+var DBpath = ""
+
 //Reads and loads SQL files as string
 func LoadSQLFile(path string) (string, error) {
 	realpath, err := filepath.Abs(path)
@@ -27,10 +29,10 @@ func LoadSQLFile(path string) (string, error) {
 }
 
 //Easy database connector
-func ConnectDB() (*sqlx.DB, error) {
+func ConnectDB(DBpath string) (*sqlx.DB, error) {
 	var db *sqlx.DB
 	var err error
-	db, err = sqlx.Connect("sqlite3", "./allbasetest.db")
+	db, err = sqlx.Connect("sqlite3", DBpath)
 	if err != nil {
 		return db, err
 	}
@@ -39,7 +41,7 @@ func ConnectDB() (*sqlx.DB, error) {
 
 //Gets id from compound name if it exists in allbase
 func NameToId(name string) (int, error) {
-	db, err := ConnectDB()
+	db, err := ConnectDB(DBpath)
 	if err != nil {
 		log.Fatalf("Couldn't connect to DB: %d", err)
 	}
@@ -74,7 +76,7 @@ func GetTotalPathways(target_molecule string, levels int) ([]pathdata, error) {
 	if err != nil {
 		return nil, err
 	}
-	db, err := ConnectDB()
+	db, err := ConnectDB(DBpath)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +99,7 @@ func OrganismFilteredPathways(GBOrganism string, target_molecule string, levels 
 	if err != nil {
 		return nil, err
 	}
-	db, err := ConnectDB()
+	db, err := ConnectDB(DBpath)
 	if err != nil {
 		return nil, err
 	}
@@ -129,7 +131,7 @@ func GetDNA(pathways []pathdata, levels int) (map[string][]DNA, error) {
 	if err != nil {
 		return nil, err
 	}
-	db, err := ConnectDB()
+	db, err := ConnectDB(DBpath)
 	if err != nil {
 		return nil, err
 	}
