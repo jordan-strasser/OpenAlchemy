@@ -17,7 +17,7 @@ with stitch AS (
 		FROM stitch
 		GROUP BY cmpd_id
 		ORDER BY count(*) DESC )
-		WHERE count > 100 -- modify to filter out commonly available molecules
+		WHERE count > 100
 		),
 		chain AS (
 		select c.rxn_id, c.cmpd_id as prod_id, c.name as product, c.formula as prod_formula,
