@@ -15,11 +15,6 @@ import (
 
 var DBpath = ""
 
-func setDB(path string) string {
-	DBpath = path
-	return DBpath
-}
-
 //Reads and loads SQL files as string
 func LoadSQLFile(path string) (string, error) {
 	realpath, err := filepath.Abs(path)
