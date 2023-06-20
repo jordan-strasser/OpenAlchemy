@@ -158,16 +158,3 @@ func GetDNA(pathways []pathdata, levels int) (map[string][]DNA, error) {
 	return PathwayToDNA, err
 }
 
-func thermoFilter(pathways map[string][]DNA) (map[string][]DNA, error) {
-	// bunch of physics
-	var err error
-	var hello map[string][]DNA
-	return hello, err
-}
-
-func OptimizeStatistically(pathways map[string][]DNA) (map[string][]DNA, error) {
-	// some ML shit, graph algorithms
-	var err error
-	var hello map[string][]DNA
-	return hello, err
-}
