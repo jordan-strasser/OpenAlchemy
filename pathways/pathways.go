@@ -1,6 +1,6 @@
 package pathways
 
-// Authors: Jordan Strasser, (Your_name_here)
+// Authors: Jordan Strasser
 
 import (
 	"io/ioutil"
